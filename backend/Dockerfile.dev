@@ -1,0 +1,15 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11
+
+ARG APP_NAME
+# Set the working directory
+ENV APP_DIR="/backend/$APP_NAME"
+# Set the working directory inside the container
+WORKDIR ${APP_DIR}
+
+COPY .${APP_DIR}/ ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+

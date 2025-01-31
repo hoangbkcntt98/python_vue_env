@@ -1,0 +1,18 @@
+FROM node:16 as build-stage
+
+ARG APP_NAME
+# Set the working directory
+ENV APP_DIR="/frontend/$APP_NAME"
+RUN mkdir -p ${APP_DIR}
+WORKDIR ${APP_DIR}
+
+# Copy package.json and package-lock.json for dependency installation
+# COPY ./frontend/package*.json ./
+# Copy the entire frontend source code
+COPY ./frontend/$APP_NAME ./
+# Install dependencies
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["npm", "run", "serve"]

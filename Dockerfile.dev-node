@@ -1,0 +1,13 @@
+FROM node:16
+
+# Set the working directory
+WORKDIR /workspace
+
+# Install necessary global tools
+# RUN npm install -g @vue/cli
+
+# # Expose a default development port
+# EXPOSE 3000
+
+# Start with a bash shell for development
+CMD ["/bin/bash"]
